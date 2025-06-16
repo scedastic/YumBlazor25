@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using YumBlazor25.Components;
 using YumBlazor25.Components.Account;
 using YumBlazor25.Data;
+using YumBlazor25.Data.Repository;
+using YumBlazor25.Data.Repository.IRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 builder.Services.AddCascadingAuthenticationState();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IdentityUserAccessor>();
 builder.Services.AddScoped<IdentityRedirectManager>();
 builder.Services.AddScoped<AuthenticationStateProvider, IdentityRevalidatingAuthenticationStateProvider>();
